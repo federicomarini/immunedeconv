@@ -98,7 +98,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://icbi-lab.github.io/immunedeconv">immunedeconv</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></code></pre></div>
-<p><em>Immunedeconv</em> ships with an example dataset with samples from four patients with metastatic melanoma published in <span class="citation">@EPIC2017</span>. It is available from <code><a href="../reference/dataset_racle.html">immunedeconv::dataset_racle</a></code>. It contains a gene expression matrix (<code>dataset_racle$expr_mat</code>) generated using bulk RNA-seq and ‘gold standard’ estimates of immune cell contents profiled with FACS (<code>dataset_racle$ref</code>). We are going to use the bulk RNA-seq data to run the deconvolution methods and will compare the results to the FACS data later on.</p>
+<p><em>Immunedeconv</em> ships with an example dataset with samples from four patients with metastatic melanoma published in <span class="citation">(Racle et al. 2017)</span>. It is available from <code><a href="../reference/dataset_racle.html">immunedeconv::dataset_racle</a></code>. It contains a gene expression matrix (<code>dataset_racle$expr_mat</code>) generated using bulk RNA-seq and ‘gold standard’ estimates of immune cell contents profiled with FACS (<code>dataset_racle$ref</code>). We are going to use the bulk RNA-seq data to run the deconvolution methods and will compare the results to the FACS data later on.</p>
 <p>The gene expression data is a matrix with HGNC symbols in rows and samples in columns: The dataset is a matrix</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># show the first 5 lines of the gene expression matrix</span>
@@ -176,7 +176,7 @@
 <li>the last two samples (LAU1255, LAU125) appear to contain a large amount of “uncharacterized cells”</li>
 <li>the last sample (LAU125) appears to contain no CD8+ T cells, often associated with bad prognosis.</li>
 </ul>
-<p>Estimating the amount of “uncharacterized cells” is a novel feature introduced by quanTIseq and EPIC <span class="citation">[@EPIC2017, @quantiseq2017]</span>. This estimate often corresponds to the fraction of tumor cells in the sample.</p>
+<p>Estimating the amount of “uncharacterized cells” is a novel feature introduced by quanTIseq and EPIC <span class="citation">(Racle et al. 2017, @quantiseq2017)</span>. This estimate often corresponds to the fraction of tumor cells in the sample.</p>
 <p>Let’s now apply MCP-counter to the same dataset.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res_mcp_counter</span> <span class="op">=</span> <span class="fu"><a href="../reference/deconvolute.html">deconvolute</a></span><span class="op">(</span><span class="va">dataset_racle</span><span class="op">$</span><span class="va">expr_mat</span>, <span class="st">"mcp_counter"</span><span class="op">)</span></code></pre></div>
@@ -246,6 +246,18 @@
 <pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <p><img src="detailed_example_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 <p>(MCP counter does not provide estimates for CD4+ T cells.)</p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+<div id="refs" class="references">
+<div id="ref-quantiseq2017">
+<p>Finotello, Francesca, Clemens Mayer, Christina Plattner, Gerhard Laschober, Dietmar Rieder, Hubert Hackl, Anne Krogsdam, et al. 2019. “Molecular and Pharmacological Modulators of the Tumor Immune Contexture Revealed by Deconvolution of Rna-Seq Data.” <em>Genome Medicine</em> 11 (1): 34.</p>
+</div>
+<div id="ref-EPIC2017">
+<p>Racle, Julien, Kaat de Jonge, Petra Baumgaertner, Daniel E Speiser, and David Gfeller. 2017. “Simultaneous enumeration of cancer and immune cell types from bulk tumor gene expression data.” <em>eLife</em> 6 (November): e26476. <a href="https://doi.org/10.7554/eLife.26476">https://doi.org/10.7554/eLife.26476</a>.</p>
+</div>
+</div>
 </div>
   </div>
 
